@@ -7,11 +7,11 @@ export default function Sandbox(){
 const data = useSelector(state => state.test.data)
 
 return (
-<>
+<div className="content">
 <h1> Testing in progress: </h1>
 <h3>the data is: {data}</h3>
 <Button onClick={()=>dispatch(increment(30))}>+</Button>
-</>
+</div>
 
 )
 

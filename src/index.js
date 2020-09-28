@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { configStore } from './store/configStore';
-
+import 'semantic-ui-css/semantic.min.css'
 
 const store = configStore()
 

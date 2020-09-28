@@ -1,6 +1,6 @@
 import { Call } from "@material-ui/icons";
 import { asyncActionError, asyncActionFinish, asyncActionStart } from "../async/asyncReducer";
-import { SHOW ,ADD, FETCH} from "./callConstant";
+import { FETCH_ONE, SHOW ,ADD, FETCH} from "./callConstant";
 
 export function showCalls(call){
 return{
@@ -17,6 +17,12 @@ export function loadData(calls){
     }
 }
 
+export function loadCall(call){
+    return{
+        type: FETCH_ONE,
+        payload: call
+    }
+}
 
 export function addCall(call){
     return{

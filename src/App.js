@@ -4,11 +4,8 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import callDetailsPage from './calls/callsDetailsPage';
 import Dashboard from './dashboard/dashboard';
-import specCall from './calls/specCall';
 import PrimarySearchAppBar from './menus/navbar'
 import Sandbox from './sandbox/Sandbox';
-import CallsList from './calls/callsList';
-
 
 function App() {
   return (
