@@ -1,0 +1,16 @@
+
+{
+"event": "recording.completed",
+"payload": {
+"account_id":"aaaaaaaaaaaaaaaaa",
+"object": {
+"uuid": "ffffffffffff==",
+"topic": "vvvvvvvvvvvvvv Meeting",
+"start_time": "2020-02-16T11:18:55Z",
+"host_email": "interview@sedric.me"
+}
+},
+"download_token": ""
+}
+
+

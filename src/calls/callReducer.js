@@ -1,7 +1,6 @@
-import {calls} from './callfile'
 
 const initialState = {
-    calls: calls,
+    calls: [],
 };
 
 export default function callReducer(state = initialState, {type, payload}) {

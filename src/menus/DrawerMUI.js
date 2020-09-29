@@ -2,17 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Button from "@material-ui/core/Button";
-import SidebarExampleVisible from "./DrawerForCalls";
 
 const drawerWidth = 160;
 
@@ -47,13 +40,6 @@ export default function PermanentDrawerLeft() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="relative" className={classes.appBar}>
-                <Toolbar>
-                    <Typography variant="h6" noWrap>
-                        Sedric
-                    </Typography>
-                </Toolbar>
-            </AppBar>
             <Drawer
                 className={classes.drawer}
                 variant="permanent"
@@ -72,15 +58,6 @@ export default function PermanentDrawerLeft() {
 
 
 
-                </List>
-                <Divider />
-                <List>
-                    {['Login'].map((text, index) => (
-                        <ListItem button key={index}>
-                            <ListItemIcon><InboxIcon /></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
                 </List>
             </Drawer>
             <main className={classes.content}>

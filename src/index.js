@@ -8,7 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { configStore } from './store/configStore';
 import 'semantic-ui-css/semantic.min.css'
 
-const store = configStore()
+
+const store = configStore();
 
 ReactDOM.render(
   <Provider store={store}>

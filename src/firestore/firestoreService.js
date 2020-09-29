@@ -15,6 +15,11 @@ export function dataFromSnapshot(snapshot){
 
 }
 
-export function getCallsFromDB(observer){
- return db.collection('calls').onSnapshot(observer);
+export function getCallsFromDB(){
+ return db.collection('calls');
 }
+
+export function getOneCallFromDB(callId){
+    return db.collection('calls').doc(callId);
+}
+
