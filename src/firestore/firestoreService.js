@@ -15,6 +15,27 @@ export function dataFromSnapshot(snapshot){
 
 }
 
+// db.collection("calls").add({
+//         "event": "recording.completed",
+//         "payload": {
+//             "account_id":"aaaaaaaaaaaaaaaaa",
+//             "object": {
+//                 "uuid": "ffffffffffff==",
+//                 "topic": "vvvvvvvvvvvvvv Meeting",
+//                 "start_time": "2020-02-16T11:18:55Z",
+//                 "host_email": "interview@sedric.me"
+//             }
+//         },
+//         "download_token": ""
+//     }
+// )
+//     .then(function() {
+//         console.log("Document successfully written!");
+//     })
+//     .catch(function(error) {
+//         console.error("Error writing document: ", error);
+//     });
+
 export function getCallsFromDB(){
  return db.collection('calls');
 }

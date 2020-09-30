@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import {increment} from './testReducer'
 export default function Sandbox(){
     const dispatch = useDispatch();
-const data = useSelector(state => state.test.data)
+const data = useSelector(state => state.test.data);
 
 return (
 <div className="content">

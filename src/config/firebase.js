@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
-
+import 'firebase/storage';
 require("firebase/functions");
 
 firebase.initializeApp({
@@ -17,5 +17,8 @@ firebase.initializeApp({
 firebase.firestore();
 
 export const auth = firebase.auth();
+export const storage = firebase.storage();
+
+
 
 export default firebase;

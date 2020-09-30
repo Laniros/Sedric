@@ -1,9 +1,16 @@
 import React from "react";
-import { getOneCallFromDB} from "../firestore/firestoreService";
+import {getCallsFromDB, getOneCallFromDB} from "../firestore/firestoreService";
 import { loadData} from "./callActions";
 import {useDispatch, useSelector} from "react-redux";
 import useFirestoreDoc from "../firestore/docHook";
-
+import Drawer from "@material-ui/core/Drawer/Drawer";
+import {CardContent, Divider} from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
+import useStyles from "../menus/DrawerMUI";
+import {Card} from "@material-ui/core";
+import Typography from '@material-ui/core/Typography';
 export default function GetOneCall({match}) {
 
 
@@ -11,30 +18,67 @@ export default function GetOneCall({match}) {
     // from store before changing it.
     const call = useSelector((state) =>
         state.calls.calls.find((call) => call.id === match.params.id));
-    const dispatch = useDispatch();
     console.log(call);
-    useFirestoreDoc({
-        query: () => getOneCallFromDB(match.params.id),
-        data: call => dispatch(loadData([call])),
-        deps: [match.params.id, dispatch]
-    });
 
 
+
+
+
+
+
+    const classes = useStyles();
     return (
-        <div style={{marginLeft: '200px'}}>
-            {call.event}
-            {Object.values(call.payload).map((p,i)=>
-                <div key={i}>
 
-                    {p.uuid}{p.topic}{p.host_email}{p.start_time}
-                </div>
-            )}
-            <div>{call.download_token}</div>
+        <div>
+            <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{
+                paper: classes.drawerPaper,
+            }}
+            anchor="left"
+
+        >
+            <div className={classes.toolbar} />
+            <Divider />
+            <List>
+                <ListItem ><Button color="inherit" href="/calls">Calls</Button> </ListItem>
+                {/*{callList()}*/}
 
 
+            </List>
+        </Drawer>
 
+            <Card style={{marginLeft: '150px', width: '400px', height:'300px'}}>
+                <CardContent>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        {call.event}
+                    </Typography>
+                    <Typography variant='body1'>
+                        {Object.values(call.payload).map((p,i)=>
+                            <div key={i}>
+                                <div>
+                             UUID:{p.uuid}
+                                </div>
+                                <div>
+                                Topic:{p.topic}
+                                </div>
+                                <div>
+                                  Host Email:{p.host_email}
+                                </div>
+                                <div>
+                                  Start Time:{p.start_time}
+                                </div>
+                            </div>
+                        )}
+                    </Typography>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        {call.download_token}
+                    </Typography>
 
-        </div>
+                </CardContent>
+            </Card>
+    </div>
 
     )
 

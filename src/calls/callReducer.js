@@ -18,12 +18,12 @@ export default function callReducer(state = initialState, {type, payload}) {
         case 'FETCH':
             return {
                 ...state,
-                calls: payload
+                calls: payload,
             };
         case 'FETCH_ONE':
             return {
                 ...state,
-                call: payload
+                calls: payload
             };
         default:
             return state;

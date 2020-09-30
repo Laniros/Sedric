@@ -19,7 +19,7 @@ function App() {
     auth.onAuthStateChanged( userAuth => {
       setCurrentUser(userAuth);
     })
-  },[])
+  },[]);
 
   return (
 <>

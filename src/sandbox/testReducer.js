@@ -1,12 +1,12 @@
 import {asyncActionError, asyncActionFinish, asyncActionStart} from '../async/asyncReducer'
 
-export const INCEREMENT = 'INCEREMENT'
+export const INCEREMENT = 'INCEREMENT';
 
 export function increment(num){
 return async function(dispatch){
     dispatch(asyncActionStart());
     try{
-        dispatch({type: INCEREMENT, payload: num})
+        dispatch({type: INCEREMENT, payload: num});
         dispatch(asyncActionFinish())
     }catch(error){
         dispatch(asyncActionError())
@@ -16,7 +16,7 @@ return async function(dispatch){
 
 const initialState = {
   data: 4,
-}
+};
 
 export default function testReducer(state = initialState, action) {
     switch(action.type){
@@ -24,7 +24,7 @@ export default function testReducer(state = initialState, action) {
             return {
             ...state,
             data: state.data + action.payload 
-            }
+            };
         default:
           return  state
     }
