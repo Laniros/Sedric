@@ -15,15 +15,22 @@ const addCall = (call) => {
 exports.callCreated = functions.firestore.document('calls/{callId}')
     .onCreate(call => {
         const data = call.data();
-        if (data.event === 'Hello to firebase!2'){
+        if (data.event === 'recording.completed2'){
             console.log('I added your event once!');
             return null;
         }
         const callDetails = {
-            event: 'Hello to firebase!2',
-            payload: [],
-            download_token: "353151353"
-
+            "event": "recording.completed2",
+            "payload": {
+                "account_id":"created by cloud function!",
+                "object": {
+                    "uuid": "ffffffffffff==",
+                    "topic": "vvvvvvvvvvvvvv Meeting",
+                    "start_time": "2020-02-16T11:18:55Z",
+                    "host_email": "interview@sedric.me"
+                }
+            },
+            "download_token": ""
         };
 
         return addCall(callDetails)

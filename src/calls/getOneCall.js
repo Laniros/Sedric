@@ -1,15 +1,9 @@
 import React from "react";
-import {getCallsFromDB, getOneCallFromDB} from "../firestore/firestoreService";
-import { loadData} from "./callActions";
-import {useDispatch, useSelector} from "react-redux";
-import useFirestoreDoc from "../firestore/docHook";
-import Drawer from "@material-ui/core/Drawer/Drawer";
-import {CardContent, Divider} from "@material-ui/core";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Button from "@material-ui/core/Button";
-import useStyles from "../menus/DrawerMUI";
+import {useSelector} from "react-redux";
+import {CardContent} from "@material-ui/core";
+import {SearchBar} from './SearchBar'
 import {Card} from "@material-ui/core";
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 export default function GetOneCall({match}) {
 
@@ -18,64 +12,43 @@ export default function GetOneCall({match}) {
     // from store before changing it.
     const call = useSelector((state) =>
         state.calls.calls.find((call) => call.id === match.params.id));
-    console.log(call);
 
 
+    //TODO: render perfectly the 'object' part in payload
+    function payloadObject(call) {
+        return <div>
+            {JSON.stringify(call.payload.object)}
+
+        </div>
+    }
 
 
-
-
-
-    const classes = useStyles();
     return (
 
         <div>
-            <Drawer
-            className={classes.drawer}
-            variant="permanent"
-            classes={{
-                paper: classes.drawerPaper,
-            }}
-            anchor="left"
-
-        >
-            <div className={classes.toolbar} />
-            <Divider />
-            <List>
-                <ListItem ><Button color="inherit" href="/calls">Calls</Button> </ListItem>
-                {/*{callList()}*/}
-
-
-            </List>
-        </Drawer>
-
-            <Card style={{marginLeft: '150px', width: '400px', height:'300px'}}>
+            <SearchBar/>
+            <Card style={{marginLeft: '150px', width: '700px', height:'700px'}}>
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        {call.event}
+                    <Typography variant='body1'>
+                        Event: {call.event}
                     </Typography>
                     <Typography variant='body1'>
-                        {Object.values(call.payload).map((p,i)=>
-                            <div key={i}>
-                                <div>
-                             UUID:{p.uuid}
-                                </div>
-                                <div>
-                                Topic:{p.topic}
-                                </div>
-                                <div>
-                                  Host Email:{p.host_email}
-                                </div>
-                                <div>
-                                  Start Time:{p.start_time}
-                                </div>
-                            </div>
-                        )}
+                        Account ID: {call.payload.account_id}
                     </Typography>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        {call.download_token}
+                    <Typography variant='body1'>
+                       Object: {payloadObject(call)}
                     </Typography>
-
+                    <Typography variant='body1'>
+                        Download Token: {call.download_token}
+                    </Typography>
+                    <Typography variant='body1'>
+                        Storage: {call.storage_url}
+                    </Typography>
+                    <CardMedia component="video" style={{marginLeft: '150px', width: 300, height: 400}}
+                        src="https://firebasestorage.googleapis.com/v0/b/sedric/o/users%2Fdemo-manager%40sedric.me%2Frecordings%2F2020-03-20T18%3A35%3A42Z.mp4?alt=media&token=85a882bb-5d41-4322-b700-91de60b78fcf"
+                        title="Live from space album cover"
+                               controls
+                        />
                 </CardContent>
             </Card>
     </div>

@@ -10,6 +10,7 @@ import getOneCall from "./calls/getOneCall";
 import {auth} from "./config/firebase";
 import Login from "./auth/Login";
 import RegisterForm from "./auth/RegisterPage";
+import Homepage from "./Home/HomePage";
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
 <>
 <PrimarySearchAppBar/>
 <Container className="main">
-<Route path="/"/>
+<Route path="/" component={Homepage}/>
 <Route path="/dashboard" component={Dashboard}/>
 <Route path="/calls/:id" component={getOneCall}/>
 <Route path="/calls" component={callDetailsPage}/>

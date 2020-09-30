@@ -3,10 +3,9 @@ import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
+
 import Button from '@material-ui/core/Button';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {signOutFirebase} from '../firestore/firebaseAuth'
 import {useHistory} from "react-router";
 
@@ -108,19 +107,7 @@ function PrimarySearchAppBar() {
                     <Button color="inherit" href="/calls">Calls</Button>
                     <Button color="inherit" href="/dashboard">Dashboard</Button>
                     <Button color="inherit" href="/sandbox">SB</Button>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon/>
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{'aria-label': 'search'}}
-                        />
-                    </div>
+
 
                     {authenticated ?
                         (<Button onClick={handleSignOut} color="inherit">Sign Out</Button>)
