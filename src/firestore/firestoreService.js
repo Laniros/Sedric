@@ -23,3 +23,12 @@ export function getOneCallFromDB(callId){
     return db.collection('calls').doc(callId);
 }
 
+export function setUserProfileData(user) {
+    return db
+        .collection('users')
+        .doc(user.uid)
+        .set({
+            displayName: user.displayName,
+            email: user.email,
+        });
+}
