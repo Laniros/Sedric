@@ -21,7 +21,7 @@ export default function LoginForm() {
     // }
 
     return (
-        <ModalWrapper size='mini' header='Sign in to Re-vents'>
+        <ModalWrapper size='mini' header='Sign in'>
             <Formik
                 initialValues={{email: '', password: ''}}
                 validationSchema={Yup.object({

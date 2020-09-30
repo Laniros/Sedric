@@ -3,8 +3,10 @@ import InputBase from "@material-ui/core/InputBase/InputBase";
 import React from "react";
 import {fade, makeStyles} from "@material-ui/core/styles";
 
-export function SearchBar(){
+export function SearchBar() {
     const useStyles = makeStyles((theme) => ({
+
+
 
         search: {
             position: 'relative',
@@ -46,20 +48,20 @@ export function SearchBar(){
 
     }));
     const classes = useStyles();
-    return(
-    <div style={{marginLeft: 100}} className={classes.search}>
-        <div className={classes.searchIcon}>
-            <SearchIcon/>
+    return (
+        <div style={{marginLeft: 100}} className={classes.search}>
+            <div className={classes.searchIcon}>
+                <SearchIcon/>
+            </div>
+            <InputBase
+                placeholder="Search…"
+                classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                }}
+                inputProps={{'aria-label': 'search'}}
+            />
         </div>
-        <InputBase
-            placeholder="Search…"
-            classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-            }}
-            inputProps={{'aria-label': 'search'}}
-        />
-    </div>
     )
 }
 

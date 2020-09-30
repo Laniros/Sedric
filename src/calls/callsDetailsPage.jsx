@@ -10,18 +10,19 @@ import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import useStyles from '../menus/DrawerMUI'
 
-
 export default function CallDetailsPage() {
 
+    //TODO: Implement search by topic
 
-//Get data from DB, storing using redux
+    //Get data from store
     const callsRef = useSelector(state => state.calls.calls);
+
     //Render call buttons
     const callList = () =>{
 
         return Object.values(callsRef).map((call, i) => {
-            return (<ListItem>
-                    <Button key={i} component={Link} to={`/calls/${call.id}`} type='button'> Call {i+1}</Button>
+            return (<ListItem key={i}>
+                    <Button component={Link} to={`/calls/${call.id}`} type='button'> Call {i+1}</Button>
 
             </ListItem>)
         });

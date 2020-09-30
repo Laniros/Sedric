@@ -12,7 +12,7 @@ export default function RegisterForm() {
     const history = useHistory();
 
     return (
-        <ModalWrapper size='mini' header='Register to Re-vents'>
+        <ModalWrapper size='mini' header='Register'>
             <Formik
                 initialValues={{email: '', password: ''}}
                 validationSchema={Yup.object({
