@@ -4,6 +4,11 @@ import {CardContent} from "@material-ui/core";
 import {Card} from "@material-ui/core";
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+
+
+//TODO: persist store state for user to be able to refresh without losing value from store
+// Or create loading state until redux value is available
+
 export default function GetOneCall({match}) {
 
 
@@ -23,7 +28,7 @@ export default function GetOneCall({match}) {
     return (
 
         <div>
-            <Card style={{marginLeft: '150px', width: '700px', height:'500px'}}>
+            <Card style={{marginLeft: '150px', width: '700px', height: '500px'}}>
                 <CardContent>
                     <Typography variant='body1'>
                         Event: {call.event}
@@ -32,20 +37,20 @@ export default function GetOneCall({match}) {
                         Account ID: {call.payload.account_id}
                     </Typography>
                     <Typography variant='body1'>
-                       Object: {payloadObject(call)}
+                        Object: {payloadObject(call)}
                     </Typography>
                     <Typography variant='body1'>
                         Download Token: {call.download_token}
                     </Typography>
-                    {call.storage_url?
-                    <CardMedia component="video" style={{marginLeft: '150px', width: 300}}
-src={call.storage_url}
-                        title="From Storage"
-                               controls
+                    {call.storage_url ?
+                        <CardMedia component="video" style={{marginLeft: '150px', width: 300}}
+                                   src={call.storage_url}
+                                   title="From Storage"
+                                   controls
                         /> : <div></div>}
                 </CardContent>
             </Card>
-    </div>
+        </div>
 
     )
 

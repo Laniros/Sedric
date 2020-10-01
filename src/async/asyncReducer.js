@@ -3,6 +3,7 @@ const ASYNC_ACTION_FINISH = "ASYNC_ACTION_FINISH";
 const ASYNC_ACTION_ERROR = "ASYNC_ACTION_ERROR";
 export const APP_LOADED = 'APP_LOADED';
 
+// TODO: finish implementing async value in store for loading purposes
 
 export function asyncActionStart() {
   return {

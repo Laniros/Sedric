@@ -9,6 +9,7 @@ import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import useStyles from '../menus/DrawerMUI'
+import {Search} from "./SearchbarSandbox";
 
 export default function CallDetailsPage() {
 
@@ -32,6 +33,7 @@ export default function CallDetailsPage() {
     return (
 
         <div className={classes.root}>
+            <Search/>
             <SearchBar/>
             <CssBaseline />
             <Drawer

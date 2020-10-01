@@ -1,59 +1,31 @@
-import React , { useState, useEffect } from "react";
-import {useSelector} from "react-redux";
+import React from "react";
+import {
+    compose,
+    createEventHandler,
+    setObservableConfig,
+    withProps, withHandlers
+} from "recompose";
+import { from } from "rxjs";
+import { debounceTime, map } from "rxjs/operators";
 
-const Search = () => {
-    const [data, setData] = useState({
-        calls: [],
-        topic: "",
-        search: "",
-        results: [],
-        searched: false
-    });
+setObservableConfig({
+    fromESObservable: from
+});
 
-    const callData = useSelector((state) => state.calls.calls);
-
-    const loadCategories = () => {
-        setData({...data, calls: callData});
+const enhance = withHandlers(() => {
+    const { handler, stream } = createEventHandler();
+    stream
+        .pipe(map(event => event.target.value), debounceTime(1000))
+        .subscribe(value => console.log(value));
+    return {
+        handleChange: props => handler
     };
-
-    useEffect(() => {
-        loadCategories();
-    }, []);
-
-    const searchData = (callTopic) => {
-
-        for (let i = 0; i < callData.length; i++) {
-
-            if (callData[i].payload.object.topic === callTopic){
-                console.log(callData[i].payload.object.topic);
-                return callData[i]
-            }
-        }
-    };
-
-    const searchSubmit = e => {
-        searchData(e);
-    };
-
-    const handleChange = name => event => {
-        setData({...data, [name]: event.target.value, searched: false});
-    };
-
-    return(
-
-
-
-    <form onSubmit={searchSubmit((e)=>e.target.value)}>
-        <label>
-            Name:
-            <input type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-    </form>
-
-    )
-
-
-};
-
-export default Search;
+});
+export const Search = enhance(({ handleChange }) => (
+    <div className="App">
+        <input
+            onChange={handleChange}
+            type="search"
+            placeholder="Search..." />
+    </div>
+));

@@ -28,8 +28,8 @@ function App() {
 <Container className="main">
 <Route path="/" component={Homepage}/>
 <Route path="/dashboard" component={Dashboard}/>
-<Route path="/calls/:id" component={getOneCall}/>
 <Route path="/calls" component={callDetailsPage}/>
+<Route path="/calls/:id" component={getOneCall}/>
 <Route path="/sandbox" component={Sandbox}/>
 <Route path='/login' component={Login}/>
 <Route path='/register' component={RegisterForm}/>
